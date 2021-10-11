@@ -23,6 +23,7 @@ deal_detail_daily = ak.stock_zh_a_tick_tx_js(code="sz000063")
 # The Second Step:
 
 # 1.创建database，表明：DDD_SZ00063,(DDD为Deal_detail_daily缩写)
+# 2.添加自动生成database功能
 db = pymysql.connect(host='localhost',user='root',passwd='*******',db='DDD_sz000063')
 cursor.execute("CREATE DATABASE DDD_sz000063")
 cursor = db.cursor()
@@ -56,10 +57,13 @@ DDD_sz000651.to_sql(name=td_str, con=conn_sz000651, if_exists='append', index=Fa
 # 2.先对DataFrame数据处理.讲可转换的string转换成数字格式，便于基础计算；
 data_num = DDD_sz000651.apply(pd.to_numeric,errors='ignore')
 data_sum = data_num['成交量'].sum()
-# OR：方式如下：
-data_num = data['成交量'].to_numpy().astype(float).sum()
+# OR：方式如下：data_num = data['成交量'].to_numpy().astype(float).sum()
 
 # 剩余指标待补充；
 
+
+
 # The Fourth Step
 # 木桶分析，成交心态分析，待补充；
+
+
