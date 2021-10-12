@@ -1,13 +1,19 @@
 # -*- coding:utf-8 -*-
 import pymysql
 
-company_code = 'sz000651'
+company_code = 'SZ000651'
 
 ###create database :company code 
 conn = pymysql.connect(host='localhost',user='root',passwd='cucumber',charset='utf8')
 cursor = conn.cursor()
-cursor.execute("CREATE DATABASE IF NOT EXISTS sz000651")
+cursor.execute("CREATE DATABASE IF NOT EXISTS stock_deal_detail_daily")
 conn.close()
+
+
+tablename_ddd_rowdata = company_code+'_ddd_rowdata'
+tablename_ddd_reviewdata = company_code+'_ddd_rowdata'
+print(tablename_ddd_reviewdata,tablename_ddd_rowdata)
+print(type(tablename_ddd_rowdata))
 '''
 # creat table：deal detail daily row data & table:deal detail daily review data
 conn = pymysql.connect(host='localhost',user='root',passwd='cucumber',db='sz000651')
